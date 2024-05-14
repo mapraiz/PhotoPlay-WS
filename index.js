@@ -43,4 +43,4 @@ app.listen(port, () => {
     console.log(`Running RestHub for PhotoPlay on port ${port}`);
 });
 
-//app.use('/api', apiRoutes);
+app.use('/api', apiRoutes);

@@ -16,29 +16,6 @@ router.get('/', function(req, res)
 
 const { get } = require('mongoose');
 
-//import Content controller
-//var playerController = require('./playerController');
-//var scoreController = require('./scoreController');
-
-
-
-//routes
-router.route('/player')
-.get(playerController.index)
-.post(playerController.new)
-
-router.route('/player/:player_name')
-.delete(playerController.delete)
-.put(playerController.update)
-.get(playerController.indexByName)
-
-router.route('/login')
-.post(playerController.login)
-
-
-router.route('/delete/:player_id')
-.delete(playerController.deletePlayer)
-
 
 
 //export 
