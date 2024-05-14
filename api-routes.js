@@ -17,8 +17,8 @@ router.get('/', function(req, res)
 const { get } = require('mongoose');
 
 //import Content controller
-var playerController = require('./playerController');
-var scoreController = require('./scoreController');
+//var playerController = require('./playerController');
+//var scoreController = require('./scoreController');
 
 
 

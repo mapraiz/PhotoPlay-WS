@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path'); 
 
-console.log('Running AFG web service index');
+console.log('Running PhotoPlay web service index');
 
 const apiRoutes = require("./api-routes");
 
@@ -43,4 +43,4 @@ app.listen(port, () => {
     console.log(`Running RestHub for PhotoPlay on port ${port}`);
 });
 
-app.use('/api', apiRoutes);
+//app.use('/api', apiRoutes);
