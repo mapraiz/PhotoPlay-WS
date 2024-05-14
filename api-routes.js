@@ -35,12 +35,6 @@ router.route('/player/:player_name')
 router.route('/login')
 .post(playerController.login)
 
-router.route('/score/top')
-.get(playerController.indexTop10)
-
-router.route('/score')
-.get(scoreController.index)
-.post(scoreController.new)
 
 router.route('/delete/:player_id')
 .delete(playerController.deletePlayer)
