@@ -1,7 +1,7 @@
 const oracledb = require('oracledb');
 const express = require('express');
 const bodyParser = require('body-parser');
-const routes = require('./routes');
+const routes = require('./routes/api-routes');
 
 async function runApp() {
   let connection;
