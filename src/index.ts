@@ -1,8 +1,10 @@
 // src/index.ts
 import "reflect-metadata";
+import { DataSource } from "typeorm";
 import express from "express";
 import preguntaRoutes from "./routes/preguntaRoutes";
 import respuestaRoutes from "./routes/respuestaRoutes";
+
 
 const app = express();
 const PORT = process.env.PORT || 1521;

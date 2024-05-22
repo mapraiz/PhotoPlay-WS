@@ -6,11 +6,11 @@ import { Pregunta } from "./Pregunta";
 @Entity()
 export class PartidaPregunta {
   @PrimaryGeneratedColumn()
-  id_partida_pregunta: number;
+  id_partida_pregunta!: number;
 
   @ManyToOne(() => Partida, partida => partida.partidaPreguntas)
-  partida: Partida;
+  partida!: Partida;
 
   @ManyToOne(() => Pregunta, pregunta => pregunta.id_pregunta)
-  pregunta: Pregunta;
+  pregunta!: Pregunta;
 }

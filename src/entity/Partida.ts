@@ -1,7 +1,7 @@
 // src/entity/Partida.ts
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from "typeorm";
-import { Usuario } from "./Usuario";
-import { PartidaPregunta } from "./PartidaPregunta";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from "typeorm"
+import { Usuario } from "./Usuario"
+import { PartidaPregunta } from "./PartidaPregunta"
 
 @Entity()
 export class Partida {
