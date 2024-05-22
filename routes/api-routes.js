@@ -14,7 +14,7 @@ router.post('/usuarios', usuarioController.crearUsuario);
 router.put('/usuarios/:id_usuario', usuarioController.actualizarUsuario);
 router.delete('/usuarios/:id_usuario', usuarioController.eliminarUsuario);
 
-// Rutas para Partida
+// Rutas para Partida loladasdlaso
 router.get('/partidas', partidaController.getPartidas);
 router.post('/partidas', partidaController.crearPartida);
 router.put('/partidas/:id_partida', partidaController.actualizarPartida);
