@@ -6,10 +6,12 @@ const routes = require('./routes');
 async function runApp() {
   let connection;
   try {
+    // Configurar la conexión con autoCommit: false
     connection = await oracledb.getConnection({
       user: "photoplay",
       password: "almi123",
-      connectString: "100.28.90.231:1521/ORCLCDB"
+      connectString: "100.28.90.231:1521/ORCLCDB",
+      autoCommit: false  // Configuración para mantener la conexión abierta
     });
     console.log("Successfully connected to Oracle Database");
 
@@ -26,6 +28,9 @@ async function runApp() {
     app.listen(PORT, () => {
       console.log(`Server running on http://localhost:${PORT}`);
     });
+
+    // Esperar a que el proceso se detenga
+    await new Promise((resolve) => process.on('SIGINT', resolve));
   } catch (err) {
     console.error(err);
   } finally {
