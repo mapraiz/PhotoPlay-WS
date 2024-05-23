@@ -6,7 +6,7 @@ const routes = require('./routes/api-routes');
 async function runApp() {
   let connection;
   try {
-    // Configurar la conexión con autoCommit: false OSTIA
+    // Configurar la conexión con autoCommit: false OSTIAadsad
     connection = await oracledb.getConnection({
       user: "photoplay",
       password: "almi123",
