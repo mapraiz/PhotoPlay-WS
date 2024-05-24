@@ -20,6 +20,8 @@ async function runApp() {
 
     // Middleware
     app.use(bodyParser.json());
+    // Middleware para servir archivos estáticos
+    app.use(express.static('/var/www/photoplayredundancia.duckdns.org'));
 
     // Routes
     app.use('/api', routes);
@@ -28,7 +30,7 @@ async function runApp() {
     app.listen(PORT, () => {
       console.log(`Server running on http://localhost:${PORT}`);
     });
-
+    
     // Esperar a que el proceso se detenga
     await new Promise((resolve) => process.on('SIGINT', resolve));
   } catch (err) {
