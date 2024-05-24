@@ -36,7 +36,9 @@ async function crearPartidaPregunta(req, res) {
         connection = await oracledb.getConnection();
         const result = await connection.execute(
             `INSERT INTO partida_pregunta (id_partida, id_pregunta) VALUES (:id_partida, :id_pregunta)`,
-            [id_partida, id_pregunta]
+            [id_partida, id_pregunta],
+            { autoCommit: true }
+
         );
         res.status(201).json({ message: 'Relación partida-pregunta creada correctamente' });
     } catch (err) {
@@ -61,7 +63,9 @@ async function actualizarPartidaPregunta(req, res) {
         connection = await oracledb.getConnection();
         const result = await connection.execute(
             `UPDATE partida_pregunta SET id_partida = :id_partida, id_pregunta = :id_pregunta WHERE id_partida_pregunta = :id_partida_pregunta`,
-            [id_partida, id_pregunta, id_partida_pregunta]
+            [id_partida, id_pregunta, id_partida_pregunta],
+            { autoCommit: true }  
+
         );
         res.json({ message: 'Relación partida-pregunta actualizada correctamente' });
     } catch (err) {
@@ -85,7 +89,9 @@ async function eliminarPartidaPregunta(req, res) {
         connection = await oracledb.getConnection();
         const result = await connection.execute(
             `DELETE FROM partida_pregunta WHERE id_partida_pregunta = :id_partida_pregunta`,
-            [id_partida_pregunta]
+            [id_partida_pregunta],
+            { autoCommit: true }  
+
         );
         res.json({ message: 'Relación partida-pregunta eliminada correctamente' });
     } catch (err) {

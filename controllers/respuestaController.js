@@ -85,7 +85,9 @@ async function eliminarRespuesta(req, res) {
         connection = await oracledb.getConnection();
         const result = await connection.execute(
             `DELETE FROM respuesta WHERE id_respuesta = :id_respuesta`,
-            [id_respuesta]
+            [id_respuesta],
+            { autoCommit: true }  
+
         );
         res.json({ message: 'Respuesta eliminada correctamente' });
     } catch (err) {

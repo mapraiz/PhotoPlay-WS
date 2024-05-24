@@ -88,7 +88,7 @@ async function eliminarUsuario(req, res) {
         const result = await connection.execute(
             `DELETE FROM usuario WHERE id_usuario = :id_usuario`,
             [id_usuario],
-            { autoCommit: true }  // Añade esta línea
+            { autoCommit: true }  
         );
         res.json({ message: 'Usuario eliminado correctamente' });
     } catch (err) {

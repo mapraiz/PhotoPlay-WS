@@ -36,7 +36,9 @@ async function crearPartida(req, res) {
         connection = await oracledb.getConnection();
         const result = await connection.execute(
             `INSERT INTO partida (fecha, puntuacion, id_usuario) VALUES (TO_TIMESTAMP(:fecha, 'YYYY-MM-DD"T"HH24:MI:SS.FF3'), :puntuacion, :id_usuario)`,
-            [fecha, puntuacion, id_usuario]
+            [fecha, puntuacion, id_usuario],
+            { autoCommit: true }  
+
         );
         res.status(201).json({ message: 'Partida creada correctamente' });
     } catch (err) {
@@ -61,7 +63,9 @@ async function actualizarPartida(req, res) {
         connection = await oracledb.getConnection();
         const result = await connection.execute(
             `UPDATE partida SET fecha = TO_TIMESTAMP(:fecha, 'YYYY-MM-DD"T"HH24:MI:SS.FF3'), puntuacion = :puntuacion, id_usuario = :id_usuario WHERE id_partida = :id_partida`,
-            [fecha, puntuacion, id_usuario, id_partida]
+            [fecha, puntuacion, id_usuario, id_partida],
+            { autoCommit: true }  
+
         );
         res.json({ message: 'Partida actualizada correctamente' });
     } catch (err) {
@@ -85,7 +89,9 @@ async function eliminarPartida(req, res) {
         connection = await oracledb.getConnection();
         const result = await connection.execute(
             `DELETE FROM partida WHERE id_partida = :id_partida`,
-            [id_partida]
+            [id_partida],
+            { autoCommit: true }  
+
         );
         res.json({ message: 'Partida eliminada correctamente' });
     } catch (err) {

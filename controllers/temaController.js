@@ -36,7 +36,9 @@ async function crearTema(req, res) {
         connection = await oracledb.getConnection();
         const result = await connection.execute(
             `INSERT INTO tema (nombre) VALUES (:nombre)`,
-            [nombre]
+            [nombre],
+            { autoCommit: true }  
+
         );
         res.status(201).json({ message: 'Tema creado correctamente' });
     } catch (err) {
@@ -61,7 +63,9 @@ async function actualizarTema(req, res) {
         connection = await oracledb.getConnection();
         const result = await connection.execute(
             `UPDATE tema SET nombre = :nombre WHERE id_tema = :id_tema`,
-            [nombre, id_tema]
+            [nombre, id_tema],
+            { autoCommit: true }  
+
         );
         res.json({ message: 'Tema actualizado correctamente' });
     } catch (err) {
@@ -85,7 +89,9 @@ async function eliminarTema(req, res) {
         connection = await oracledb.getConnection();
         const result = await connection.execute(
             `DELETE FROM tema WHERE id_tema = :id_tema`,
-            [id_tema]
+            [id_tema],
+            { autoCommit: true }  
+
         );
         res.json({ message: 'Tema eliminado correctamente' });
     } catch (err) {
