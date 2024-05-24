@@ -36,7 +36,8 @@ async function crearUsuario(req, res) {
         connection = await oracledb.getConnection();
         const result = await connection.execute(
             `INSERT INTO usuario (username, contrasena, admin) VALUES (:username, :contrasena, :admin)`,
-            [username, contrasena, admin]
+            [username, contrasena, admin],
+            { autoCommit: true }  // Añade esta línea
         );
         res.status(201).json({ message: 'Usuario creado correctamente' });
     } catch (err) {
@@ -61,7 +62,8 @@ async function actualizarUsuario(req, res) {
         connection = await oracledb.getConnection();
         const result = await connection.execute(
             `UPDATE usuario SET username = :username, contrasena = :contrasena, admin = :admin WHERE id_usuario = :id_usuario`,
-            [username, contrasena, admin, id_usuario]
+            [username, contrasena, admin, id_usuario],
+            { autoCommit: true }  // Añade esta línea
         );
         res.json({ message: 'Usuario actualizado correctamente' });
     } catch (err) {
@@ -85,7 +87,8 @@ async function eliminarUsuario(req, res) {
         connection = await oracledb.getConnection();
         const result = await connection.execute(
             `DELETE FROM usuario WHERE id_usuario = :id_usuario`,
-            [id_usuario]
+            [id_usuario],
+            { autoCommit: true }  // Añade esta línea
         );
         res.json({ message: 'Usuario eliminado correctamente' });
     } catch (err) {
