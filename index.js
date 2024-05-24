@@ -6,11 +6,11 @@ const routes = require('./routes/api-routes');
 async function runApp() {
   let connection;
   try {
-    // Configurar la conexión con autoCommit: false
+    // Configurar la conexión con autoCommit: false OSTIAadsaddadsdasdasd
     connection = await oracledb.getConnection({
       user: "c##photoplay",
       password: "almi123",
-      connectString: "3.221.255.12:1521/ORCLCDB",
+      connectString: "100.28.90.231:1521/ORCLCDB",
       autoCommit: false  // Configuración para mantener la conexión abierta
     });
     console.log("Successfully connected to Oracle Database");
