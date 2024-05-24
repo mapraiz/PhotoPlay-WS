@@ -10,7 +10,7 @@ async function runApp() {
     connection = await oracledb.getConnection({
       user: "c##photoplay",
       password: "almi123",
-      connectString: "100.28.90.231:1521/ORCLCDB",
+      connectString: "3.221.255.12:1521/ORCLCDB",
       autoCommit: false  // Configuración para mantener la conexión abierta
     });
     console.log("Successfully connected to Oracle Database");
