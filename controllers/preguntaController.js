@@ -36,7 +36,8 @@ async function crearPregunta(req, res) {
         connection = await oracledb.getConnection();
         const result = await connection.execute(
             `INSERT INTO pregunta (img, texto, id_tema) VALUES (:img, :texto, :id_tema)`,
-            [img, texto, id_tema]
+            [img, texto, id_tema],
+            { autoCommit: true }  
         );
         res.status(201).json({ message: 'Pregunta creada correctamente' });
     } catch (err) {
@@ -61,7 +62,8 @@ async function actualizarPregunta(req, res) {
         connection = await oracledb.getConnection();
         const result = await connection.execute(
             `UPDATE pregunta SET img = :img, texto = :texto, id_tema = :id_tema WHERE id_pregunta = :id_pregunta`,
-            [img, texto, id_tema, id_pregunta]
+            [img, texto, id_tema, id_pregunta],
+            { autoCommit: true }  
         );
         res.json({ message: 'Pregunta actualizada correctamente' });
     } catch (err) {
