@@ -21,7 +21,7 @@ async function runApp() {
     // Middleware
     app.use(bodyParser.json());
     // Middleware para servir archivos estáticos
-    app.use(express.static('/var/www/photoplayredundancia.duckdns.org'));
+    app.use(express.static('/var/www/photoplayredundancia.duckdns.org/PhotoPlay-Web'));
 
     // Routes
     app.use('/api', routes);
