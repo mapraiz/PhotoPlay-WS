@@ -1,4 +1,3 @@
-const oracledb = require('oracledb');
 const dbConfig = require('../config/dbConfig');
 const oracledb = require('oracledb');
 
