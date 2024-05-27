@@ -53,7 +53,4 @@ router.delete('/partidas-preguntas/:id_partida_pregunta', partidaPreguntaControl
 
 
 // Rutas para Pregunta
-
-
-
 module.exports = router;

@@ -104,12 +104,10 @@ async function eliminarUsuario(req, res) {
         }
     }
 }
-exports.comprobarUsuario = async (req, res) => {
+async function comprobarUsuario (req, res) {
     const { username, contrasena } = req.query;
 
     try {
-        // Lógica para comprobar el usuario y contraseña
-        // Esto puede variar dependiendo de cómo esté implementado tu sistema de usuarios
         const usuarioValido = await UsuarioService.comprobarUsuario(username, contrasena);
 
         if (usuarioValido) {
@@ -127,5 +125,6 @@ module.exports = {
     getUsuarios,
     crearUsuario,
     actualizarUsuario,
-    eliminarUsuario
+    eliminarUsuario,
+    comprobarUsuario
 };

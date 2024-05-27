@@ -120,7 +120,7 @@ exports.obtenerPreguntaYRespuestas = async (req, res) => {
 };
 
 // Obtener respuesta correcta
-exports.obtenerRespuestaCorrecta = async (req, res) => {
+async function obtenerRespuestaCorrecta (req, res) {
     const { pregunta } = req.query;
 
     try {
@@ -135,7 +135,7 @@ exports.obtenerRespuestaCorrecta = async (req, res) => {
 };
 
 // Obtener pregunta aleatoria
-exports.obtenerPreguntaAleatoria = async (req, res) => {
+async function obtenerPreguntaAleatoria (req, res) {
     const { tema } = req.query;
 
     try {
@@ -150,7 +150,7 @@ exports.obtenerPreguntaAleatoria = async (req, res) => {
 };
 
 // Obtener respuestas aleatorias
-exports.obtenerRespuestasAleatorias = async (req, res) => {
+async function obtenerRespuestasAleatorias (req, res) {
     const { pregunta } = req.query;
 
     try {
@@ -168,7 +168,8 @@ module.exports = {
     getPreguntas,
     crearPregunta,
     actualizarPregunta,
-    eliminarPregunta
-
-
+    eliminarPregunta,
+    obtenerRespuestaCorrecta,
+    obtenerPreguntaAleatoria,
+    obtenerRespuestasAleatorias
 };
