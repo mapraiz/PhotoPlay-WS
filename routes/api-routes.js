@@ -13,7 +13,6 @@ const javaController = require('../controllers/javaController');
 
 // Ruta para validar usuario
 router.get('/api/validarUsuario', javaController.comprobarUsuario);
-
 // Ruta para obtener respuesta correcta
 router.get('/api/obtenerRespuestaCorrecta', javaController.obtenerRespuestaCorrecta);
 
