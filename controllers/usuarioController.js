@@ -1,4 +1,3 @@
-// controllers/usuarioController.js
 const oracledb = require('oracledb');
 const dbConfig = require('../config/dbConfig');
 
@@ -104,13 +103,20 @@ async function eliminarUsuario(req, res) {
         }
     }
 }
-const UsuarioService = require('../services/UsuarioService');
 
 async function comprobarUsuario(req, res) {
     const { username, contrasena } = req.query;
 
+    let connection;
     try {
-        const usuarioValido = await UsuarioService.comprobarUsuario(username, contrasena);
+        connection = await oracledb.getConnection();
+        const result = await connection.execute(
+            `SELECT COUNT(*) AS count FROM usuario WHERE username = :username AND contrasena = :contrasena`,
+            { username, contrasena }
+        );
+
+        // El usuario es válido si se encuentra en la base de datos
+        const usuarioValido = result.rows[0].count > 0;
 
         if (usuarioValido) {
             res.status(200).send("Usuario válido");
@@ -120,10 +126,17 @@ async function comprobarUsuario(req, res) {
     } catch (error) {
         console.error(error);
         res.status(500).send("Error interno");
+    } finally {
+        if (connection) {
+            try {
+                await connection.close();
+            } catch (err) {
+                console.error(err);
+            }
+        }
     }
 }
 
-// Export comprobarUsuario along with other controller functions
 module.exports = {
     getUsuarios,
     crearUsuario,
