@@ -17,7 +17,7 @@ async function initialize() {
 initialize();
 
 // Lógica del login
-async function login(req, res) {
+exports.login = async (req, res) => {
     const { username, contrasena } = req.body;
 
     let connection;
@@ -70,9 +70,6 @@ async function login(req, res) {
         }
     }
 }
-
-// Agregar la función de login a los exports
-exports.login = login;
 
 // Obtener respuesta correcta
 exports.obtenerRespuestaCorrecta = async (req, res) => {
