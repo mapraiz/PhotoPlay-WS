@@ -1,7 +1,6 @@
 // controllers/usuarioController.js
 const oracledb = require('oracledb');
 const dbConfig = require('../config/dbConfig');
-const UsuarioService = require('../services/UsuarioService');
 
 // Inicializar la conexión a la base de datos
 async function initialize() {
@@ -105,7 +104,9 @@ async function eliminarUsuario(req, res) {
         }
     }
 }
-async function comprobarUsuario (req, res) {
+const UsuarioService = require('../services/UsuarioService');
+
+async function comprobarUsuario(req, res) {
     const { username, contrasena } = req.query;
 
     try {
@@ -120,8 +121,9 @@ async function comprobarUsuario (req, res) {
         console.error(error);
         res.status(500).send("Error interno");
     }
-};
+}
 
+// Export comprobarUsuario along with other controller functions
 module.exports = {
     getUsuarios,
     crearUsuario,
