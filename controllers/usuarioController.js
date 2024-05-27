@@ -103,6 +103,7 @@ async function eliminarUsuario(req, res) {
         }
     }
 }
+
 async function validarUsuario(username, contrasena) {
     let connection;
     let isValid = false;
