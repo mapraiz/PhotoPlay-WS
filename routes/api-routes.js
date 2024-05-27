@@ -1,6 +1,7 @@
 // routes/index.js
 const express = require('express');
 const router = express.Router();
+
 const usuarioController = require('../controllers/usuarioController');
 const partidaController = require('../controllers/partidaController');
 const preguntaController = require('../controllers/preguntaController');
@@ -15,6 +16,7 @@ router.post('/usuarios', usuarioController.crearUsuario);
 router.put('/usuarios/:id_usuario', usuarioController.actualizarUsuario);
 router.delete('/usuarios/:id_usuario', usuarioController.eliminarUsuario);
 router.get('/usuario/comprobar', usuarioController.comprobarUsuario);
+
 
 // Rutas para Partida loladasdlaso
 router.get('/partidas', partidaController.getPartidas);
