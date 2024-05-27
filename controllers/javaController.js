@@ -17,14 +17,15 @@ async function initialize() {
 initialize();
 
 // Lógica del login
-exports.login = async (req, res) => {
+async function login(req, res) {
     const { username, contrasena } = req.body;
 
     let connection;
 
     try {
         // Obtener la conexión de la base de datos
-        connection = await oracledb.getConnection(dbConfig);
+        const pool = dbConfig.getPool();
+        connection = await pool.getConnection();
 
         // Preparar los parámetros de salida
         const result = await connection.execute(
