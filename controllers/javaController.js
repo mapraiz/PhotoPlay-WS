@@ -1,5 +1,7 @@
 const oracledb = require('oracledb');
 const dbConfig = require('../config/dbConfig');
+const oracledb = require('oracledb');
+
 
 // Inicializar la conexión a la base de datos
 async function initialize() {
@@ -7,8 +9,6 @@ async function initialize() {
 }
 
 initialize();
-const oracledb = require('oracledb');
-const dbConfig = require('../config/dbConfig');
 
 // Inicializar la conexión a la base de datos
 async function initialize() {
