@@ -38,7 +38,6 @@ async function crearTema(req, res) {
             `INSERT INTO tema (nombre) VALUES (:nombre)`,
             [nombre],
             { autoCommit: true }  
-
         );
         res.status(201).json({ message: 'Tema creado correctamente' });
     } catch (err) {
