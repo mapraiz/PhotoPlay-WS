@@ -115,7 +115,6 @@ async function comprobarUsuario(req, res) {
             { username, contrasena }
         );
 
-        // El usuario es válido si se encuentra en la base de datos
         const usuarioValido = result.rows[0].count > 0;
 
         if (usuarioValido) {
