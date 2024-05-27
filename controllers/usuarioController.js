@@ -103,19 +103,45 @@ async function eliminarUsuario(req, res) {
         }
     }
 }
+async function validarUsuario(username, contrasena) {
+    let connection;
+    let isValid = false;
+    try {
+        connection = await oracledb.getConnection();
+        const bindVars = {
+            p_username: { dir: oracledb.BIND_IN, val: username },
+            p_password: { dir: oracledb.BIND_IN, val: contrasena },
+            p_valid: { dir: oracledb.BIND_OUT, type: oracledb.NUMBER }
+        };
+        const result = await connection.execute(
+            `BEGIN
+                 VALIDAR_USUARIO(:p_username, :p_password, :p_valid);
+             END;`,
+            bindVars,
+            { autoCommit: true }
+        );
+
+        isValid = result.outBinds.p_valid === 1;
+    } catch (err) {
+        console.error(err);
+        throw err;
+    } finally {
+        if (connection) {
+            try {
+                await connection.close();
+            } catch (err) {
+                console.error(err);
+            }
+        }
+    }
+    return isValid;
+}
 
 async function comprobarUsuario(req, res) {
     const { username, contrasena } = req.query;
 
-    let connection;
     try {
-        connection = await oracledb.getConnection();
-        const result = await connection.execute(
-            `SELECT COUNT(*) AS count FROM usuario WHERE username = :username AND contrasena = :contrasena`,
-            { username, contrasena }
-        );
-
-        const usuarioValido = result.rows[0].count > 0;
+        const usuarioValido = await validarUsuario(username, contrasena);
 
         if (usuarioValido) {
             res.status(200).send("Usuario válido");
@@ -125,14 +151,6 @@ async function comprobarUsuario(req, res) {
     } catch (error) {
         console.error(error);
         res.status(500).send("Error interno");
-    } finally {
-        if (connection) {
-            try {
-                await connection.close();
-            } catch (err) {
-                console.error(err);
-            }
-        }
     }
 }
 
