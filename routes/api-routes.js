@@ -11,13 +11,20 @@ const partidaPreguntaController = require('../controllers/partidaPreguntaControl
 const javaController = require('../controllers/javaController');
 //Para java
 
-router.get('/validarUsuario', javaController.comprobarUsuario);
-router.get('/obtenerUsuario', javaController.obtenerUsuario);
-router.get('/obtenerPreguntas', javaController.obtenerPreguntas);
-router.get('/obtenerRespuestaCorrecta', javaController.obtenerRespuestaCorrecta);
-router.get('/obtenerPreguntaAleatoria', javaController.obtenerPreguntaAleatoria);
-router.get('/obtenerRespuestasAleatorias', javaController.obtenerRespuestasAleatorias);
-router.get('/obtenerPreguntaYRespuestas', javaController.obtenerPreguntaYRespuestas);
+// Ruta para validar usuario
+router.get('/api/validarUsuario', javaController.comprobarUsuario);
+
+// Ruta para obtener respuesta correcta
+router.get('/api/obtenerRespuestaCorrecta', javaController.obtenerRespuestaCorrecta);
+
+// Ruta para obtener pregunta aleatoria
+router.get('/api/obtenerPreguntaAleatoria', javaController.obtenerPreguntaAleatoria);
+
+// Ruta para obtener respuestas aleatorias
+router.get('/api/obtenerRespuestasAleatorias', javaController.obtenerRespuestasAleatorias);
+
+// Ruta para obtener pregunta y respuestas
+router.get('/api/obtenerPreguntaYRespuestas', javaController.obtenerPreguntaYRespuestas);
 
 
 // Rutas para Usuario
