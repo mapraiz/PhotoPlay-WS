@@ -19,8 +19,9 @@ async function runApp() {
     const app = express();
     const PORT = process.env.PORT || 8080;
 
-    // Middleware
+      // Middleware
     app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
     // Middleware para servir archivos estáticos
     //app.use(express.static('/var/www/photoplayredundancia.duckdns.org/PhotoPlay-Web'));
 
