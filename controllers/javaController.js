@@ -72,6 +72,7 @@ async function login(req, res) {
     }
 }
 
+
 // Obtener respuesta correcta
 exports.obtenerRespuestaCorrecta = async (req, res) => {
     const { pregunta } = req.query;
@@ -146,5 +147,14 @@ exports.obtenerPreguntaYRespuestas = async (req, res) => {
         console.error(error);
         res.status(500).send("Error interno");
     }
+};
+
+// Exportar controladores
+module.exports = {
+    login: login,
+    obtenerRespuestaCorrecta,
+    obtenerPreguntaAleatoria,
+    obtenerRespuestasAleatorias,
+    obtenerPreguntaYRespuestas
 };
 

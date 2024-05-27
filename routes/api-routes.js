@@ -9,8 +9,9 @@ const temaController = require('../controllers/temaController');
 const partidaPreguntaController = require('../controllers/partidaPreguntaController');
 const controller = require('../controllers/javaController'); // Ensure the correct controller is imported
 
+const javaController = require('./javaController');
 // Route for checking login
-router.post('/login', controller.login); // Use the correct controller object
+router.post('/login', javaController.login);
 
 // Route to get the correct answer
 router.get('/obtenerRespuestaCorrecta', controller.obtenerRespuestaCorrecta);
