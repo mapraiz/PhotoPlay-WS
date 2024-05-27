@@ -8,7 +8,7 @@ const preguntaController = require('../controllers/preguntaController');
 const respuestaController = require('../controllers/respuestaController');
 const temaController = require('../controllers/temaController');
 const partidaPreguntaController = require('../controllers/partidaPreguntaController');
-const javaController = require('../controllers/javaController');
+const controller = require('../controllers/javaController');
 //Para java
 // Ruta para comprobar el login
 router.post('/login', javaController.login);
@@ -68,5 +68,5 @@ router.delete('/partidas-preguntas/:id_partida_pregunta', partidaPreguntaControl
 
 
 
-// Rutas para Pregunta
+
 module.exports = router;
