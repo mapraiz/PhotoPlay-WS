@@ -1,6 +1,7 @@
 // controllers/usuarioController.js
 const oracledb = require('oracledb');
 const dbConfig = require('../config/dbConfig');
+const UsuarioService = require('../services/UsuarioService');
 
 // Inicializar la conexión a la base de datos
 async function initialize() {
