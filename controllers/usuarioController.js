@@ -37,7 +37,7 @@ async function crearUsuario(req, res) {
         const result = await connection.execute(
             `INSERT INTO usuario (username, contrasena, admin) VALUES (:username, :contrasena, :admin)`,
             [username, contrasena, admin],
-            { autoCommit: true }  // Añade esta línea
+            { autoCommit: true }  
         );
         res.status(201).json({ message: 'Usuario creado correctamente' });
     } catch (err) {
@@ -63,7 +63,7 @@ async function actualizarUsuario(req, res) {
         const result = await connection.execute(
             `UPDATE usuario SET username = :username, contrasena = :contrasena, admin = :admin WHERE id_usuario = :id_usuario`,
             [username, contrasena, admin, id_usuario],
-            { autoCommit: true }  // Añade esta línea
+            { autoCommit: true } 
         );
         res.json({ message: 'Usuario actualizado correctamente' });
     } catch (err) {

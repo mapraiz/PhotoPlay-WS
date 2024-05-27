@@ -36,7 +36,8 @@ async function crearRespuesta(req, res) {
         connection = await oracledb.getConnection();
         const result = await connection.execute(
             `INSERT INTO respuesta (correcta, texto, id_pregunta) VALUES (:correcta, :texto, :id_pregunta)`,
-            [correcta, texto, id_pregunta]
+            [correcta, texto, id_pregunta],
+            { autoCommit: true }
         );
         res.status(201).json({ message: 'Respuesta creada correctamente' });
     } catch (err) {
@@ -61,7 +62,8 @@ async function actualizarRespuesta(req, res) {
         connection = await oracledb.getConnection();
         const result = await connection.execute(
             `UPDATE respuesta SET correcta = :correcta, texto = :texto, id_pregunta = :id_pregunta WHERE id_respuesta = :id_respuesta`,
-            [correcta, texto, id_pregunta, id_respuesta]
+            [correcta, texto, id_pregunta, id_respuesta],
+            { autoCommit: true }
         );
         res.json({ message: 'Respuesta actualizada correctamente' });
     } catch (err) {
