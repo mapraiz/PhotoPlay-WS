@@ -7,26 +7,18 @@ async function initialize() {
 }
 
 initialize();
-
 exports.validarUsuario = async (username, contrasena) => {
     let connection;
     let isValid = false;
     try {
         connection = await oracledb.getConnection();
-        const bindVars = {
-            p_username: { dir: oracledb.BIND_IN, val: username },
-            p_password: { dir: oracledb.BIND_IN, val: contrasena },
-            p_valid: { dir: oracledb.BIND_OUT, type: oracledb.NUMBER }
-        };
         const result = await connection.execute(
-            `BEGIN
-                 VALIDAR_USUARIO(:p_username, :p_password, :p_valid);
-             END;`,
-            bindVars,
-            { autoCommit: true }
+            `SELECT COUNT(*) as count FROM usuario WHERE username = :username AND contrasena = :contrasena`,
+            { username, contrasena },
+            { outFormat: oracledb.OUT_FORMAT_OBJECT }
         );
 
-        isValid = result.outBinds.p_valid === 1;
+        isValid = result.rows[0].COUNT > 0;
     } catch (err) {
         console.error(err);
         throw err;

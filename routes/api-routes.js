@@ -12,8 +12,6 @@ const javaController = require('../controllers/javaController');
 //Para java
 
 router.get('/validarUsuario', javaController.comprobarUsuario);
-
-
 router.get('/obtenerUsuario', javaController.obtenerUsuario);
 router.get('/obtenerPreguntas', javaController.obtenerPreguntas);
 router.get('/obtenerRespuestaCorrecta', javaController.obtenerRespuestaCorrecta);
