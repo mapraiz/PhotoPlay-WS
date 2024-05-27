@@ -10,20 +10,22 @@ const temaController = require('../controllers/temaController');
 const partidaPreguntaController = require('../controllers/partidaPreguntaController');
 const javaController = require('../controllers/javaController');
 //Para java
+// Ruta para comprobar el login
+router.post('/login', javaController.login);
 
-// Ruta para validar usuario
-router.get('/api/validarUsuario', javaController.comprobarUsuario);
-// Ruta para obtener respuesta correcta
-router.get('/api/obtenerRespuestaCorrecta', javaController.obtenerRespuestaCorrecta);
+// Ruta para obtener la respuesta correcta
+router.get('/obtenerRespuestaCorrecta', controller.obtenerRespuestaCorrecta);
 
-// Ruta para obtener pregunta aleatoria
-router.get('/api/obtenerPreguntaAleatoria', javaController.obtenerPreguntaAleatoria);
+// Ruta para obtener una pregunta aleatoria
+router.get('/obtenerPreguntaAleatoria', controller.obtenerPreguntaAleatoria);
 
 // Ruta para obtener respuestas aleatorias
-router.get('/api/obtenerRespuestasAleatorias', javaController.obtenerRespuestasAleatorias);
+router.get('/obtenerRespuestasAleatorias', controller.obtenerRespuestasAleatorias);
 
-// Ruta para obtener pregunta y respuestas
-router.get('/api/obtenerPreguntaYRespuestas', javaController.obtenerPreguntaYRespuestas);
+// Ruta para obtener una pregunta y sus respuestas
+router.get('/obtenerPreguntaYRespuestas', controller.obtenerPreguntaYRespuestas);
+
+
 
 
 // Rutas para Usuario
