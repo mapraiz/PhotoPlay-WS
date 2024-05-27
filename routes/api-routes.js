@@ -1,4 +1,3 @@
-// routes/index.js
 const express = require('express');
 const router = express.Router();
 
@@ -8,65 +7,57 @@ const preguntaController = require('../controllers/preguntaController');
 const respuestaController = require('../controllers/respuestaController');
 const temaController = require('../controllers/temaController');
 const partidaPreguntaController = require('../controllers/partidaPreguntaController');
-const controller = require('../controllers/javaController');
-//Para java
-// Ruta para comprobar el login
-router.post('/login', javaController.login);
+const controller = require('../controllers/javaController'); // Ensure the correct controller is imported
 
-// Ruta para obtener la respuesta correcta
+// Route for checking login
+router.post('/login', controller.login); // Use the correct controller object
+
+// Route to get the correct answer
 router.get('/obtenerRespuestaCorrecta', controller.obtenerRespuestaCorrecta);
 
-// Ruta para obtener una pregunta aleatoria
+// Route to get a random question
 router.get('/obtenerPreguntaAleatoria', controller.obtenerPreguntaAleatoria);
 
-// Ruta para obtener respuestas aleatorias
+// Route to get random answers
 router.get('/obtenerRespuestasAleatorias', controller.obtenerRespuestasAleatorias);
 
-// Ruta para obtener una pregunta y sus respuestas
+// Route to get a question and its answers
 router.get('/obtenerPreguntaYRespuestas', controller.obtenerPreguntaYRespuestas);
 
-
-
-
-// Rutas para Usuario
+// Routes for Usuario
 router.get('/usuarios', usuarioController.getUsuarios);
 router.post('/usuarios', usuarioController.crearUsuario);
 router.put('/usuarios/:id_usuario', usuarioController.actualizarUsuario);
 router.delete('/usuarios/:id_usuario', usuarioController.eliminarUsuario);
 
-
-
-// Rutas para Partida loladasdlaso
+// Routes for Partida
 router.get('/partidas', partidaController.getPartidas);
 router.post('/partidas', partidaController.crearPartida);
 router.put('/partidas/:id_partida', partidaController.actualizarPartida);
 router.delete('/partidas/:id_partida', partidaController.eliminarPartida);
 
-// Rutas para Pregunta
+// Routes for Pregunta
 router.get('/preguntas', preguntaController.getPreguntas);
 router.post('/preguntas', preguntaController.crearPregunta);
 router.put('/preguntas/:id_pregunta', preguntaController.actualizarPregunta);
 router.delete('/preguntas/:id_pregunta', preguntaController.eliminarPregunta);
 
-// Rutas para Respuesta
+// Routes for Respuesta
 router.get('/respuestas', respuestaController.getRespuestas);
 router.post('/respuestas', respuestaController.crearRespuesta);
 router.put('/respuestas/:id_respuesta', respuestaController.actualizarRespuesta);
 router.delete('/respuestas/:id_respuesta', respuestaController.eliminarRespuesta);
 
-// Rutas para Tema
+// Routes for Tema
 router.get('/temas', temaController.getTemas);
 router.post('/temas', temaController.crearTema);
 router.put('/temas/:id_tema', temaController.actualizarTema);
 router.delete('/temas/:id_tema', temaController.eliminarTema);
 
-// Rutas para PartidaPregunta
+// Routes for PartidaPregunta
 router.get('/partidas-preguntas', partidaPreguntaController.getPartidasPreguntas);
 router.post('/partidas-preguntas', partidaPreguntaController.crearPartidaPregunta);
 router.put('/partidas-preguntas/:id_partida_pregunta', partidaPreguntaController.actualizarPartidaPregunta);
 router.delete('/partidas-preguntas/:id_partida_pregunta', partidaPreguntaController.eliminarPartidaPregunta);
-
-
-
 
 module.exports = router;
