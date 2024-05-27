@@ -7,14 +7,18 @@ const partidaController = require('../controllers/partidaController');
 const preguntaController = require('../controllers/preguntaController');
 const respuestaController = require('../controllers/respuestaController');
 const temaController = require('../controllers/temaController');
-//Para java
 const partidaPreguntaController = require('../controllers/partidaPreguntaController');
+const javaController = require('../controllers/javaController');
+//Para java
+
+
 
 // Rutas para Usuario
 router.get('/usuarios', usuarioController.getUsuarios);
 router.post('/usuarios', usuarioController.crearUsuario);
 router.put('/usuarios/:id_usuario', usuarioController.actualizarUsuario);
 router.delete('/usuarios/:id_usuario', usuarioController.eliminarUsuario);
+//java
 router.get('/usuario/comprobar', usuarioController.comprobarUsuario);
 
 

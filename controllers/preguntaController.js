@@ -105,26 +105,10 @@ async function eliminarPregunta(req, res) {
         }
     }
 }
-exports.obtenerPreguntaYRespuestas = async (req, res) => {
-    const { tema } = req.query;
-
-    try {
-        // Lógica para obtener pregunta y respuestas según el tema
-        const preguntaYRespuestas = await PreguntaService.obtenerPreguntaYRespuestas(tema);
-
-        res.status(200).json(preguntaYRespuestas);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send("Error interno");
-    }
-};
 
 module.exports = {
     getPreguntas,
     crearPregunta,
     actualizarPregunta,
     eliminarPregunta,
-    obtenerRespuestaCorrecta,
-    obtenerPreguntaAleatoria,
-    obtenerRespuestasAleatorias
 };
