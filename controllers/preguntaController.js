@@ -119,51 +119,6 @@ exports.obtenerPreguntaYRespuestas = async (req, res) => {
     }
 };
 
-// Obtener respuesta correcta
-async function obtenerRespuestaCorrecta (req, res) {
-    const { pregunta } = req.query;
-
-    try {
-        // Lógica para obtener la respuesta correcta de una pregunta
-        const respuestaCorrecta = await PreguntaService.obtenerRespuestaCorrecta(pregunta);
-
-        res.status(200).json({ respuesta: respuestaCorrecta });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send("Error interno");
-    }
-};
-
-// Obtener pregunta aleatoria
-async function obtenerPreguntaAleatoria (req, res) {
-    const { tema } = req.query;
-
-    try {
-        // Lógica para obtener una pregunta aleatoria según el tema
-        const preguntaAleatoria = await PreguntaService.obtenerPreguntaAleatoria(tema);
-
-        res.status(200).json({ pregunta: preguntaAleatoria });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send("Error interno");
-    }
-};
-
-// Obtener respuestas aleatorias
-async function obtenerRespuestasAleatorias (req, res) {
-    const { pregunta } = req.query;
-
-    try {
-        // Lógica para obtener respuestas aleatorias de una pregunta
-        const respuestasAleatorias = await PreguntaService.obtenerRespuestasAleatorias(pregunta);
-
-        res.status(200).json(respuestasAleatorias);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send("Error interno");
-    }
-};
-
 module.exports = {
     getPreguntas,
     crearPregunta,
