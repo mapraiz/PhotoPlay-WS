@@ -74,7 +74,7 @@ async function login(req, res) {
 
 
 // Obtener respuesta correcta
-exports.obtenerRespuestaCorrecta = async (req, res) => {
+async function obtenerRespuestaCorrecta(req, res) {
     const { pregunta } = req.query;
 
     try {
@@ -90,24 +90,9 @@ exports.obtenerRespuestaCorrecta = async (req, res) => {
 
 
 
-
-// Obtener respuesta correcta
-exports.obtenerRespuestaCorrecta = async (req, res) => {
-    const { pregunta } = req.query;
-
-    try {
-        // Lógica para obtener la respuesta correcta de una pregunta
-        const respuestaCorrecta = await PreguntaService.obtenerRespuestaCorrecta(pregunta);
-
-        res.status(200).json({ respuesta: respuestaCorrecta });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send("Error interno");
-    }
-};
 
 // Obtener pregunta aleatoria
-exports.obtenerPreguntaAleatoria = async (req, res) => {
+async function obtenerPreguntaAleatoria(req, res) {
     const { tema } = req.query;
 
     try {
@@ -122,7 +107,7 @@ exports.obtenerPreguntaAleatoria = async (req, res) => {
 };
 
 // Obtener respuestas aleatorias
-exports.obtenerRespuestasAleatorias = async (req, res) => {
+async function obtenerRespuestasAleatorias(req, res) {
     const { pregunta } = req.query;
 
     try {
@@ -135,7 +120,7 @@ exports.obtenerRespuestasAleatorias = async (req, res) => {
         res.status(500).send("Error interno");
     }
 };
-exports.obtenerPreguntaYRespuestas = async (req, res) => {
+async function obtenerPreguntaYRespuestas(req, res) {
     const { tema } = req.query;
 
     try {
