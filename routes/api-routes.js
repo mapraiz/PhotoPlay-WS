@@ -14,16 +14,16 @@ const javaController = require('./javaController');
 router.post('/login', javaController.login);
 
 // Route to get the correct answer
-router.get('/obtenerRespuestaCorrecta', controller.obtenerRespuestaCorrecta);
+router.get('/obtenerRespuestaCorrecta', javaController.obtenerRespuestaCorrecta);
 
 // Route to get a random question
-router.get('/obtenerPreguntaAleatoria', controller.obtenerPreguntaAleatoria);
+router.get('/obtenerPreguntaAleatoria', javaController.obtenerPreguntaAleatoria);
 
 // Route to get random answers
-router.get('/obtenerRespuestasAleatorias', controller.obtenerRespuestasAleatorias);
+router.get('/obtenerRespuestasAleatorias', javaController.obtenerRespuestasAleatorias);
 
 // Route to get a question and its answers
-router.get('/obtenerPreguntaYRespuestas', controller.obtenerPreguntaYRespuestas);
+router.get('/obtenerPreguntaYRespuestas', javaController.obtenerPreguntaYRespuestas);
 
 // Routes for Usuario
 router.get('/usuarios', usuarioController.getUsuarios);
