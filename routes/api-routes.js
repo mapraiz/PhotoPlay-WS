@@ -7,7 +7,7 @@ const preguntaController = require('../controllers/preguntaController');
 const respuestaController = require('../controllers/respuestaController');
 const temaController = require('../controllers/temaController');
 const partidaPreguntaController = require('../controllers/partidaPreguntaController');
-const controller = require('../javaController'); // Ensure the correct controller is imported
+const controller = require('./javaController'); // Ensure the correct controller is imported
 
 const javaController = require('./javaController');
 // Route for checking login
