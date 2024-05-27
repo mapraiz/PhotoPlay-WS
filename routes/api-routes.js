@@ -11,6 +11,11 @@ const partidaPreguntaController = require('../controllers/partidaPreguntaControl
 const javaController = require('../controllers/javaController');
 //Para java
 
+router.get('/validarUsuario', javaController.comprobarUsuario);
+router.get('/obtenerRespuestaCorrecta', javaController.obtenerRespuestaCorrecta);
+router.get('/obtenerPreguntaAleatoria', javaController.obtenerPreguntaAleatoria);
+router.get('/obtenerRespuestasAleatorias', javaController.obtenerRespuestasAleatorias);
+router.get('/obtenerPreguntaYRespuestas', javaController.obtenerPreguntaYRespuestas);
 
 
 // Rutas para Usuario
@@ -19,7 +24,6 @@ router.post('/usuarios', usuarioController.crearUsuario);
 router.put('/usuarios/:id_usuario', usuarioController.actualizarUsuario);
 router.delete('/usuarios/:id_usuario', usuarioController.eliminarUsuario);
 //java
-router.get('/usuario/comprobar', usuarioController.comprobarUsuario);
 
 
 // Rutas para Partida loladasdlaso
@@ -33,11 +37,7 @@ router.get('/preguntas', preguntaController.getPreguntas);
 router.post('/preguntas', preguntaController.crearPregunta);
 router.put('/preguntas/:id_pregunta', preguntaController.actualizarPregunta);
 router.delete('/preguntas/:id_pregunta', preguntaController.eliminarPregunta);
-// Rutas para Pregunta Java
-router.get('/preguntas/obtener', preguntaController.obtenerPreguntaYRespuestas);
-router.get('/respuesta/correcta', preguntaController.obtenerRespuestaCorrecta);
-router.get('/pregunta/aleatoria', preguntaController.obtenerPreguntaAleatoria);
-router.get('/respuestas/aleatorias', preguntaController.obtenerRespuestasAleatorias);
+
 // Rutas para Respuesta
 router.get('/respuestas', respuestaController.getRespuestas);
 router.post('/respuestas', respuestaController.crearRespuesta);
