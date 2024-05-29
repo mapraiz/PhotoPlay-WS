@@ -2,28 +2,27 @@ const oracledb = require('oracledb');
 const express = require('express');
 const bodyParser = require('body-parser');
 const routes = require('./routes/api-routes');
-
+const path = require('path');
 
 async function runApp() {
   let connection;
   try {
-    // Configurar la conexión con autoCommit: false OSTIAadsaddadsdasdasd
     connection = await oracledb.getConnection({
       user: "c##photoplay",
       password: "almi123",
       connectString: "3.221.255.12:1521/ORCLCDB",
-      autoCommit: false  // Configuración para mantener la conexión abierta
+      autoCommit: false
     });
     console.log("Successfully connected to Oracle Database");
 
     const app = express();
     const PORT = process.env.PORT || 8080;
 
-      // Middleware
+    // Middleware
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
     // Middleware para servir archivos estáticos
-    //app.use(express.static('/var/www/photoplayredundancia.duckdns.org/PhotoPlay-Web'));
+    app.use(express.static(path.join(__dirname, 'public')));
 
     // Routes
     app.use('/api', routes);
@@ -32,7 +31,7 @@ async function runApp() {
     app.listen(PORT, () => {
       console.log(`Server running on http://localhost:${PORT}`);
     });
-    
+
     // Esperar a que el proceso se detenga
     await new Promise((resolve) => process.on('SIGINT', resolve));
   } catch (err) {
