@@ -1,6 +1,7 @@
 const oracledb = require('oracledb');
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const routes = require('./routes/api-routes');
 const path = require('path');
 
@@ -21,6 +22,12 @@ async function runApp() {
     // Middleware
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(cors({
+      origin: 'https://redundancia1000.duckdns.org',
+      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+      allowedHeaders: ['Content-Type', 'Authorization']
+    }));
+
     // Middleware para servir archivos estáticos
     app.use(express.static('/var/www/redundancia1000.duckdns.org/PhotoOstia/public'));
 
