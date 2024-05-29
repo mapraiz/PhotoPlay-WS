@@ -22,7 +22,7 @@ async function runApp() {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
     // Middleware para servir archivos estáticos
-    app.use(express.static(path.join(__dirname, 'public')));
+    app.use(express.static('/var/www/redundancia1000.duckdns.org/PhotoOstia/public'));
 
     // Routes
     app.use('/api', routes);
